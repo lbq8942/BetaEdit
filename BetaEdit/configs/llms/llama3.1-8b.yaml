@@ -1,0 +1,39 @@
+name: meta-llama/Llama-3.1-8B-Instruct
+
+fact_token: subject_last
+
+clamp_norm_factor: 0.75
+v_num_grad_steps: 25
+v_lr: 0.1
+v_loss_layer: 31
+v_weight_decay: 0.5
+kl_factor: 0.0625
+
+layers:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+mom2_update_weight:
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+  - 15000
+layer_selection: all
+
+emb_module: model.embed_tokens
+rewrite_module_tmp: model.layers.{}.mlp.down_proj
+layer_module_tmp: model.layers.{}
+mlp_module_tmp: model.layers.{}.mlp
+attn_module_tmp: model.layers.{}.self_attn
+ln_f_module: model.norm
+lm_head_module: lm_head
+
+mom2_dataset: wikipedia
+mom2_n_samples: 100000
+mom2_dtype: float32
+mom2_adjustment: true
+mom2_maxseqlen: 8192 #if set to be null(space), memory will not be enough to calculate K0KOT for 48GB GPU。
+#by the way, the model_dtype in config.yaml should also be set to bfloat16 rather than float32 for 48GB GPU when calculate K0KOT

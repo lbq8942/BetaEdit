@@ -1,0 +1,29 @@
+defaults:
+  - algs: seqlte
+  - llms: llama3-8b
+
+seed: 0
+gpu: 0
+model_dtype: float32 #choices=["auto","float32","bfloat16"]
+bs: 1
+data: multi_counterfact_20877 #choices=[multi_counterfact_20877,zsre_mend_eval_19086]
+num_edits: 10000
+test_only: False
+debug_mode: False #edit a small number of samples, for debug only,
+#it will not save model, you can ignore it.
+c_edit: False #continue to edit from previous edited model, you must ensure the previous checkpoint exists.
+
+save_name: default #the prefix of the name of saved model, {dataset}-{save_name}-{model_name}.pt
+#format of save_name: 2000-bs100
+load_name: default #the prefix of the name of saved model to be loaded, {dataset}-{load_name}-{model_name}.pt
+#format of save_name: 2000-bs100
+data_dir: data
+results_dir: result #per alg
+cache_dir: cache #per llm
+
+pre_eval: False
+lw_eval: False
+lbq_eval: False
+glue_eval: False
+
+

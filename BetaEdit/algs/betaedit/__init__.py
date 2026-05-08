@@ -1,0 +1,1 @@
+from .betaedit_main  import apply_betaedit_to_model

@@ -1,0 +1,5 @@
+name: betaedit
+lambda2: 10
+lambda1: 3000
+P_freq: 1000
+nullspace_threshold: 0.02
