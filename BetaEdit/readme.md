@@ -50,6 +50,13 @@ To run with a custom number of sequential edits (e.g., 2,000):
 ```bash
 num_edits=2000
 ```
+### Use different hyperparameters
+
+We have two hyperparameters, the knowledge leakeage penalty coefficient $\lambda_1$ and the period $\tau$ to refresh the projection matrix. To change the hyperparameters, use the following command:
+
+```bash
+algs.lambda1=5000 algs.tau=500
+```
 
 ### GLUE Evaluation
 
