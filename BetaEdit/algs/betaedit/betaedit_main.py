@@ -169,7 +169,7 @@ def apply_betaedit_to_model(
             Pi = get_project(model, tok, layer, cfg)
             torch.save(Pi.cpu(), Ppathi)
     load_project(cfg)
-    PUs=[ProjectionUpdater(P,cfg.algs.P_freq) for P in Ps]
+    PUs=[ProjectionUpdater(P,cfg.algs.tau) for P in Ps]
     load_cov(cfg,model,tok)
 
     fc_dim=get_fc_dim(model,cfg)
