@@ -4,6 +4,8 @@
 
 This repository contains the implementation of **BetaEdit**, featuring two mechanisms: first, the knowledge leakage induced by the pseudo null space is penalized with $\lambda_1$ (set to 3000), second, the projection matrix **P** is refreshed every $\tau$ (set to 1000) edits to maximize the profit of history-aware update.
 
+BetaEdit remains effective even after 10000 sequential edits.
+
 **Paper accepted to IJCAI 2026.** 🎉
 
 ## Data and Code Structure
