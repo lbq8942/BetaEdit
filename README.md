@@ -1,12 +1,30 @@
 # BetaEdit: Null-Space Constrained Sequential Model Editing
 
+
+
+**2026/05/01 Paper accepted to IJCAI 2026.** 🎉
+
+
 ## Overview
 
-This repository contains the implementation of **BetaEdit**, featuring two mechanisms: first, the knowledge leakage induced by the pseudo null space is penalized with $\lambda_1$ (set to 3000), second, the projection matrix **P** is refreshed every $\tau$ (set to 1000) edits to maximize the profit of history-aware update.
+This repository contains the implementation of **BetaEdit**, featuring two mechanisms: first, the knowledge leakage induced by the pseudo null space is penalized with $\lambda_1$ (set to 3000), second, the projection matrix $P_t$ is refreshed every $\tau$ (set to 1000) edits to maximize the profit of history-aware update. BetaEdit remains effective even after **10000** sequential edits.
 
-BetaEdit remains effective even after 10000 sequential edits.
+The update rule of BetaEdit is,
 
-**Paper accepted to IJCAI 2026.** 🎉
+$$
+\boxed{
+\Delta_t = \mathbf{R}_t \mathbf{K}_t^\top \mathbf{P}_t \left( \lambda_2 \mathbf{I} + \left( \mathbf{K}_t \mathbf{K}_t^\top + \lambda_1 \mathbf{K}_0 \mathbf{K}_0^\top + \sum_{i=1}^{t-1} \mathbf{K}_i \mathbf{K}_i^\top \right)\mathbf{P}_t \right)^{-1}
+}
+$$
+
+While AlphaEdit runs as follows,
+
+$$
+\boxed{
+\Delta_t = \mathbf{R}_t \mathbf{K}_t^\top \mathbf{P}_0 \left( \lambda_2 \mathbf{I} + \left( \mathbf{K}_t \mathbf{K}_t^\top + \sum_{i=1}^{t-1} \mathbf{K}_i \mathbf{K}_i^\top \right)\mathbf{P}_0 \right)^{-1}
+}
+$$
+
 
 ## Data and Code Structure
 
@@ -73,6 +91,20 @@ glue_eval=True
 If you find this work helpful, please cite our paper:
 
 ```
-BetaEdit: Null-Space Constrained Sequential Model Editing. IJCAI 2026.
+@inproceedings{ijcai2026p508,
+  title     = {BetaEdit: Null-Space Constrained Sequential Model Editing},
+  author    = {Liu, Bingqing and Liu, Wei and Li, Yuhua},
+  booktitle = {Proceedings of the Thirty-Fifth International Joint Conference on
+               Artificial Intelligence, {IJCAI-26}},
+  publisher = {International Joint Conferences on Artificial Intelligence Organization},
+  editor    = {Diego Calvanese},
+  pages     = {4563--4571},
+  year      = {2026},
+  month     = {8},
+  note      = {Main Track},
+  doi       = {10.24963/ijcai.2026/508},
+  url       = {https://doi.org/10.24963/ijcai.2026/508},
+}
+
 ```
 
